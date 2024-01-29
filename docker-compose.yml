@@ -18,6 +18,8 @@ services:
       MYSQL_USER: "example"
       MYSQL_PASSWORD: "example"
 
+
+
   web:
     # build specifies the location of a custom Dockerfile
     build: ./web
@@ -35,6 +37,19 @@ services:
       MYSQL_DATABASE: "world"
       MYSQL_USER: "example"
       MYSQL_PASSWORD: "example"
+
+  phpmyadmin:
+        image: phpmyadmin
+        restart: always
+        ports:
+          #host part: container port
+          - "8080:80"
+        environment:
+          PMA_HOST: "db"
+          PMA_USER: "example"
+          PMA_PASSWORD: "example"
+
+
 
 # named volumes:
 #volumes:
